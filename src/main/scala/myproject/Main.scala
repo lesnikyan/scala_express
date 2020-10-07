@@ -9,13 +9,17 @@ object Main extends {
     ListOperatorDemo.demo
     BasicOOP.demo
     OperatorsDemo.demo
+    FuncDemo.demo
+    // Collection.demo
+    // update-apply-unapply
 //    traits.Demo.run
-//    funcs.Demo.run
 //    coll.Demo.run
 //    matching.Demo.run
 //    generic.Demo.run
 //    types.Demo.run
 //    implicits.Demo.run
+
+//    StdInDemo.demo
   }
 
 

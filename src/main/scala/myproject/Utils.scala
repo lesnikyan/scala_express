@@ -16,7 +16,7 @@ trait Utils {
     ps("")
   }
 
-  def pa[T](arg:Array[T]){
+  def pa[T](arg:Seq[T]){
     pf("%s(%s)", arg.getClass.getSimpleName, arg.take(32).mkString(", "))
   }
 

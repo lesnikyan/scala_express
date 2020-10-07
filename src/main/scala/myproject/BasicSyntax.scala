@@ -1,5 +1,11 @@
 package myproject
 
+/*
+sbt shell:
+about
+compile
+run
+ */
 
 import scala.collection.immutable.Stream.Empty
 
@@ -20,10 +26,10 @@ object BasicSyntax extends Demo {
 
     (null, false, Nil, None, Unit, Empty) // several way to say: No
 
-//    (Null, Nothing) // child of all types
+    // (Null, Nothing) // child of all types
 
     // parent types
-//    (
+    //    (
     //    Any, // any at all
     //    AnyVal, // simple types
     //    AnyRef, // classes

@@ -79,6 +79,14 @@ object ControlStructures extends Demo {
     pf("Acro: %s", acronym)
 
     // for with if
+    ps("for - if")
+    for(x <- 1 until 10 if(x % 3 == 0)){
+      pt(x); pt(" ")
+    }
+    ps
+
+    // for-generator
+
 
     // switch-case
 

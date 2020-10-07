@@ -72,6 +72,8 @@ class NumPair(val x: Int){
   // boolean property
   def isTwins = x == y
 
+//  def operator= = new NumPair(1)
+
   override def toString: String = "%s(%d, %d)".format(this.getClass.getSimpleName, x, y)
 
 }
