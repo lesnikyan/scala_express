@@ -20,6 +20,10 @@ object BasicSyntax extends Demo {
     val isAdmin = true
     // isAdmin = false // ERROR
     val esrctOrbit = 149.6e9 // meters
+    val floatVal: Float = 1111.011f
+    val doubleVal: Double = 1.00005d
+    pf("num doubleVal type:  %s", doubleVal.getClass.getName)
+    pf("num floatVal type:  %s", floatVal.getClass.getName)
     val firstChar = 'A'
 
     (Int, Byte, Char, Long, Float, Double, Boolean) // Simple types
@@ -79,6 +83,20 @@ object BasicSyntax extends Demo {
     ps("-- trim")
     ps(multiLineStr.stripMargin.trim)
     ps("-- x")
+
+    // s
+
+    val strName = "Vasya"
+    val strOrder = 14
+    val strNums = Array(333000, 555)
+    ps(s"s-string: Meet ${strName} $strOrder has $$ ${(strNums(0) + strNums(1)) * 1000} ")
+
+    // f
+    val dd = 25.00125d
+    ps("f-string: $dd%2.5f $strName%s ")
+
+    // raw
+    ps(raw"Raw string \n \t \\ ")
 
     // Array
 

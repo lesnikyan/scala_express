@@ -10,6 +10,7 @@ object Main extends {
     BasicOOP.demo
     OperatorsDemo.demo
     FuncDemo.demo
+    MemberAccessDemo.demo
     // Collection.demo
     // update-apply-unapply
 //    traits.Demo.run

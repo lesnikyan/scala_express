@@ -28,3 +28,7 @@ trait Utils {
     pt("")
   }
 }
+
+object PrintUtils extends Utils {
+
+}

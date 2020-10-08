@@ -13,6 +13,16 @@ object ControlStructures extends Demo {
 
     // for by number function
     // 1.until(10)
+    ps(" for to")
+    for(x <- 1 to 10){
+      pt(x)
+      pt(" ")
+    }
+    ps
+
+    // for by number function
+    // 1.until(10)
+    ps("for until")
     for(x <- 1 until 10){
       pt(x)
       pt(" ")
@@ -73,10 +83,10 @@ object ControlStructures extends Demo {
     // block result assignment
     val acronym = {val words = Array("Hit", "editor", "lorem", "look", "one");
       var res = List[Char]()
-      for(c: String <- words){ res = c.head :: res };
+      for(w: String <- words){ res = w.head :: res };
       res.reverse.mkString("")
     }
-    pf("Acro: %s", acronym)
+    pf("Acronym: %s", acronym)
 
     // for with if
     ps("for - if")
@@ -85,7 +95,51 @@ object ControlStructures extends Demo {
     }
     ps
 
-    // for-generator
+    // complicated for
+    ps("Complicated `for`")
+    for(
+      x <- 1 to 100;
+      y <- List(11, 13, 17, 19)
+      if x > 40 && x % y == 0
+    ) {
+      pt("%d(%d,%d) ".format(x, y, x / y));
+    }
+    ps
+
+    // for generator
+    ps("Generator")
+
+    ps((for(x <- 1 to 17) yield x * 10) toList)
+
+    val charList = for(x <- 0 to 10) yield "%c".format('A' + x)
+    pf("CharList: %s, %s", charList.getClass.getName, charList.mkString(", "))
+
+    // Break loop
+
+    import scala.util.control.Breaks._
+
+    ps("break 1-10 on 5")
+    breakable{
+      for(x <- 1 to 10){
+        if(x == 5){
+          break
+        }
+        pt(x); pt(" ")
+      }
+    }
+    ps
+
+    // continue-like example
+    ps("continue on %3==0 1-10 ")
+    for(x <- 1 to 10){
+      breakable{
+        if(x % 3 == 0){
+          break
+        }
+        pt(x); pt(" ")
+      }
+    }
+    ps
 
 
     // switch-case
