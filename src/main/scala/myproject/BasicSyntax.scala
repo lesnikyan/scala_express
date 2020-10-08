@@ -10,6 +10,7 @@ run
 import scala.collection.immutable.Stream.Empty
 
 object BasicSyntax extends Demo {
+
   def run = {
 
     // 2 spaces indentation
@@ -40,6 +41,8 @@ object BasicSyntax extends Demo {
     //    )
 
     import scala.math.{pow, round, E, Pi, sqrt}
+    import scala.util.control._
+    import myproject.PrintUtils.{pf => myprint}
 
     // any value is object
 
@@ -93,7 +96,7 @@ object BasicSyntax extends Demo {
 
     // f
     val dd = 25.00125d
-    ps("f-string: $dd%2.5f $strName%s ")
+    ps(f"f-string: $dd%2.5f $strName%s ")
 
     // raw
     ps(raw"Raw string \n \t \\ ")
@@ -102,7 +105,10 @@ object BasicSyntax extends Demo {
 
     ps("-- Array --")
     var nums2 = Array(10, 20, 30)
+    ps(nums2)
+    pa(nums2)
     nums2 = nums2.reverse
+    nums2(1) = 88
     pa(nums2)
 
     val names: Array[String] = Array("Vasya", "Vova", "Goga")
@@ -118,8 +124,10 @@ object BasicSyntax extends Demo {
     val names2: List[String] = names.toList
 
     val years = List(2001, 2002, 2003)
-    val nextYears = 2004 :: 2005 :: 2006 :: List()
+    val nextYears = 2004 :: 2005 :: 2006 :: List[Int]()
     val nextNext = 2007 :: 2008 :: 2009 :: Nil
+//    years.head
+//    years.tail
 
     var numList = List(1, 2, 3, 4, 5)
     val numPart2 = 6 :: 7 ::8 :: 9 :: Nil
@@ -149,6 +157,8 @@ object BasicSyntax extends Demo {
 
     // define function
     def biSum(a: Int, b: Int): Int = a + b
+
+    def zzz = "zzz"
 
     pf("biSum(12, 5) = %d", biSum(12, 5))
 
