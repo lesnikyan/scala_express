@@ -4,17 +4,16 @@ package myproject
 
 object MemberAccessDemo extends Demo {
     override def run(): Unit = {
-        ps("--- DemoMemberAccess.run ---")
-        val memc = new MemberAccess()
-        ps("read/write:origin:", memc.c)
-        memc.c = 11
-        ps("read/write:changed:", memc.c)
+        val memAcc = new MemberAccess()
+        ps("read/write:origin:", memAcc.c)
+        memAcc.c = 11
+        ps("read/write:changed:", memAcc.c)
 
-        memc.changeVal
+        memAcc.changeVal
 
         // BeanProperty
-        memc.setEee(33)
-        ps("BeanProperty:", memc.getEee)
+        memAcc.setEee(33)
+        ps("BeanProperty:", memAcc.getEee)
 
         val submac = new SubMemberAccess()
         submac.changeF(44)
@@ -66,11 +65,10 @@ class MemberAccess {
     }
 
     // 6. JavaBean Property
-
+    // generates: getEee, setEee
     @BeanProperty var eee = 0
 
     // 7. protected
-
     protected var f = 0
 
 }

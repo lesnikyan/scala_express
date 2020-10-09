@@ -3,6 +3,7 @@ package myproject
 import scala.collection.mutable.ArrayBuffer
 
 object ConstrDemo extends Demo {
+
     def run = {
         // Constructors
         var items = new MyClass(11, 1f, "Aaa") :: new MyClass(22, 2f, "Bbb") :: new MyClass(33, 3f, "Ccc") :: Nil
