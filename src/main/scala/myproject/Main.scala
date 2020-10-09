@@ -4,16 +4,16 @@ import myproject._
 object Main extends {
 
   def main(args: Array[String]): Unit = {
-//    BasicSyntax.demo
-//    ControlStructures.demo
-//    ListOperatorDemo.demo
-//    BasicOOP.demo
-//    OperatorsDemo.demo
-//    FuncDemo.demo
+    BasicSyntax.demo
+    ControlStructures.demo
+    ListOperatorDemo.demo
+    BasicOOP.demo
+    OperatorsDemo.demo
+    FuncDemo.demo
     MemberAccessDemo.demo
-//    EnumDemo.demo
-//    ApplyDemo.demo
-//    ConstrDemo.demo
+    EnumDemo.demo
+    ApplyDemo.demo
+    ConstrDemo.demo
 
 
     // Collection.demo
