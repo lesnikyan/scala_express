@@ -14,6 +14,7 @@ object Main extends {
     EnumDemo.demo
     ApplyDemo.demo
     ConstrDemo.demo
+    CollectionDemo.demo
 
 
     // Collection.demo

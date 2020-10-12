@@ -20,6 +20,10 @@ trait Utils {
     pf("%s(%s)", arg.getClass.getSimpleName, arg.take(32).mkString(", "))
   }
 
+  def pa[T](msg: String, arg:Seq[T]){
+    pf("%s|(%s)", msg, arg.getClass.getSimpleName, arg.take(32).mkString(", "))
+  }
+
   def pt[T](obj: T): Unit ={
     print(obj)
   }
