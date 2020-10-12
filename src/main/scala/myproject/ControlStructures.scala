@@ -12,7 +12,7 @@ object ControlStructures extends Demo {
     ps
 
     // for by number function
-    // 1.until(10)
+    // 1.to(10)
     ps(" for to")
     for(x <- 1 to 10){
       pt(x)
@@ -30,7 +30,7 @@ object ControlStructures extends Demo {
     ps
 
     // while
-
+    // by counter
     var count = 0
     ps("While counter:")
     pt("\t")
@@ -60,6 +60,7 @@ object ControlStructures extends Demo {
       pt(untilIter.next)
       pt("; ")
     }
+    ps
 
 
     // `if` statement.
@@ -75,7 +76,6 @@ object ControlStructures extends Demo {
     pf("oddNums: %s", oddNums.reverse)
 
     // one line: if(cond) value1 else value2
-
     val valX = 123
     val valY = if(valX % 2 > 0) valX else valX + 1
     pf("odd 123: %d", valY)
@@ -96,6 +96,7 @@ object ControlStructures extends Demo {
     ps
 
     // complicated for
+    // for(x <- seq1; y <- seq2 if condition )
     ps("Complicated `for`")
     for(
       x <- 1 to 100;
@@ -118,6 +119,7 @@ object ControlStructures extends Demo {
 
     import scala.util.control.Breaks._
 
+    // break example
     ps("break 1-10 on 5")
     breakable{
       for(x <- 1 to 10){
