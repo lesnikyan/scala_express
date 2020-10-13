@@ -15,12 +15,11 @@ object Main extends {
     ApplyDemo.demo
     ConstrDemo.demo
     CollectionDemo.demo
+    ClassMethods.demo
 
 
-    // Collection.demo
     // update-apply-unapply
 //    traits.Demo.run
-//    coll.Demo.run
 //    matching.Demo.run
 //    generic.Demo.run
 //    types.Demo.run

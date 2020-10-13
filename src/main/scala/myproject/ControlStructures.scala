@@ -107,13 +107,21 @@ object ControlStructures extends Demo {
     }
     ps
 
-    // for generator
+    // for generator:
     ps("Generator")
 
-    ps((for(x <- 1 to 17) yield x * 10) toList)
+    val numSeq5 = 1 to 5
+    val numGen5 = for(x <- numSeq5) yield x * 5 // 5 - 25
+    ps(numGen5)
 
+    // yield with block
+    val numVec17 = for(x <- 1 to 17) yield {val y = x * 2; y * 5}
+    ps(numVec17 toList)
+
+    // type of generator result
     val charList = for(x <- 0 to 10) yield "%c".format('A' + x)
-    pf("CharList: %s, %s", charList.getClass.getName, charList.mkString(", "))
+    pf("CharList: %s | %s", charList.getClass.getName, charList.mkString(", "))
+
 
     // Break loop
 
@@ -146,7 +154,7 @@ object ControlStructures extends Demo {
 
     // switch-case
 
-    val matchNums = List(-5, 0, 1, 2, 3, 10)
+    val matchNums = List(-5, 0, 1, 2, 3, 10, 25)
 
     pf("-- Matching nums --", matchNums)
     for(num <- matchNums) {
@@ -158,8 +166,8 @@ object ControlStructures extends Demo {
         case 2 => pf("two: %d", num)
 
         // Case with condition
-        case n if n > 2 => pf("2 more: %d", num)
-        case n if n < 0 => pf("zero less: %d", num)
+        case n if n > 5 => pf("2 more: n = %d", n)
+        case n if n < 0 => pf("lt 0: n = %d", n)
 
         // default case
         case _ => pf("other: %d", num)

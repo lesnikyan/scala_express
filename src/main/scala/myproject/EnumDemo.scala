@@ -25,12 +25,6 @@ object SimpleEnum extends Enumeration  {
     val Zero, First, Second, Third, Fourth, Fifth = Value
 }
 
-//object TunedEnum extends Enumeration {
-//    val Pedro = Value(100, "working")
-//    val John = Value(110, "having-fun")
-//    val Mixailo = Value(120, "thinking")
-//}
-
 object WeekDay extends Enumeration {
     val Sun = Value(1, "Sunday")
     val Mon = Value(2, "Monday")

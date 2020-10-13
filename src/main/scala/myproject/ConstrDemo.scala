@@ -7,9 +7,9 @@ object ConstrDemo extends Demo {
     def run = {
         // Constructors
         var items = new MyClass(11, 1f, "Aaa") :: new MyClass(22, 2f, "Bbb") :: new MyClass(33, 3f, "Ccc") :: Nil
-        items = new MyClass(44, 4f, "Ddd") :: items
-        items = new MyClass() :: new MyClass("Eee") :: items
-        val items2 = new MyClass(77, 7f, "Ggg") :: new MyClass(88, 8f, "Fff") :: Nil
+        items = MyClass(44, 4f, "Ddd") :: items
+        items = new MyClass() :: MyClass("Eee") :: items
+        val items2 = MyClass(77, 7f, "Ggg") :: MyClass(88, 8f, "Fff") :: Nil
         items = items2 ::: items
         for(item <- items){
             println("item: ", item)
@@ -17,7 +17,7 @@ object ConstrDemo extends Demo {
 
         // Inner class
         val super1 = new MyClass("Val1")
-        val super2 = new MyClass("Val2")
+        val super2 = MyClass("Val2")
         val sub1 = new super1.SubClass("SubOne")
         val sub2 = new super1.SubClass("SubTwo")
         val sub3 = new super2.SubClass("SubThree")
@@ -66,4 +66,9 @@ object MyClass{
     var lastId:Int = 0
     def nextId: Int = {lastId += 1; lastId}
     def setLast(value: Int): Unit = {lastId = value}
+
+    def apply(name:String) = new MyClass(name)
+
+    def apply(x:Int, y:Float, name:String) = new MyClass(x, y, name)
+
 }
