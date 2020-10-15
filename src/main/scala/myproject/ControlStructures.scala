@@ -173,5 +173,48 @@ object ControlStructures extends Demo {
         case _ => pf("other: %d", num)
       }
     }
+
+    // Try-catch
+    for(x <- List(0, 1, 321)){
+      try{
+        ExceptionMaker.go(x)
+      } catch {
+
+        case ex: CustomExceptionOne => {
+          pf("Except case 1: %s", ex.getMessage)
+        }
+
+        case ex: CustomException002 => pf(s"Error case: ${ex.getMessage}")
+
+        case _: Throwable => ps("Default exception caught")
+
+      } finally {
+        ps(s"### Finally block of iter: $x")
+      }
+    }
+
+
+  }
+
+}
+
+
+class CustomExceptionOne(msg: String) extends Exception(msg){
+
+}
+
+class CustomException002(msg: String) extends Exception(msg){
+
+}
+
+object ExceptionMaker {
+  def go(arg: Int=0) = {
+    if (arg == 0){
+      throw new Exception("Default test exception")
+    }
+    arg match {
+      case x if x > 0 && x < 100 => throw new CustomExceptionOne(f"Passed arg $x%d")
+      case _ => throw new CustomException002(f"Passed arg $arg%d")
+    }
   }
 }
