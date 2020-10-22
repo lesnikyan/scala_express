@@ -8,23 +8,26 @@ object TypeDemo extends Demo {
   def run = {
     ps(" -- 1. Demo:Types --")
 
-    // this.type
+    // Chain call this.type
+    ps(" -- 2. Chain Demo --")
     InstanceType.demo
+    ChainsDemo.demo
 
-    // chains
-    ps(" -- 2. Chains Demo --")
-    import myproject.ChainsDemo.InnerContainer.InnerInnerClass
+
+    // inner classes
+    ps(" -- 3. Inner Demo --")
+    import myproject.InnerDemo.InnerContainer.InnerInnerClass
 
     val chainClassInst = new InnerInnerClass
     ps(chainClassInst.info)
-    ps(ChainsDemo.InnerContainer.info)
+    ps(InnerDemo.InnerContainer.info)
 
     // type as alias
-    ps(" -- 3. Type alias --")
+    ps(" -- 4. Type alias --")
     TypeAlias.demo
 
     // Structural type:
-    ps(" -- 4. Structural type --")
+    ps(" -- 5. Structural type --")
     StructuralType.demo
   }
 }
@@ -34,7 +37,7 @@ import myproject.utils.PubUtils._
 
 // this.type
 
-object InstanceType{
+object InstanceType {
 
   class Default {
     def foo(s: String) = s
@@ -77,8 +80,40 @@ object InstanceType{
 }
 
 
-// chains
+// same: instance type
 object ChainsDemo {
+
+  class SuperUnit{
+
+    var _aaa = ""
+
+    var _bbb = ""
+
+    def setA(v: String): this.type = {_aaa = v; this}
+
+    def setB(v: String): this.type = {_bbb = v; this}
+
+    def info = s"${_aaa}, ${_bbb}"
+  }
+
+  class SubUnit extends SuperUnit {
+    var _ccc = 0
+
+    def setC(v: Int) = _ccc = v
+
+    override def info: String = s"${super.info}, c: ${_ccc}"
+  }
+
+  def demo = {
+    val unit = new SubUnit()
+    unit.setA("Abba").setB("Bim-Bom") setC 123
+    ps(s"SubUnit: ${unit.info}")
+  }
+
+}
+
+// inner
+object InnerDemo {
 
   object InnerContainer {
     class InnerInnerClass {

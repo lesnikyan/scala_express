@@ -2,7 +2,7 @@ package myproject
 
 object TraitsDemo extends Demo {
   def run = {
-    println("---" * 20 + "\n main.traits.Demo:")
+
     // as interface
     val animals = Array(
       new Dog("Muhtar"),

@@ -4,21 +4,24 @@ object InheritDemo extends Demo {
 
   override def run = {
     val a = new Aaa("aaa")
-    println(a.nameRepeate(3))
+    println(a.nameRepeat(3))
     val a2 = new Aaa2("aaa22", 5)
-    println(a2.nameRepeate(2))
+    println(a2.nameRepeat(2))
+
     // type check
     if(a2.isInstanceOf[Aaa]){
       val aa = a2.asInstanceOf[Aaa]
-      println("aa: " + aa.nameRepeate(4))
+      println("aa: " + aa.nameRepeat(4))
       if(aa.isInstanceOf[Aaa2]){
         val a22 = aa.asInstanceOf[Aaa2]
-        println("a22:" + a22.nameRepeate(3))
+        println("a22:" + a22.nameRepeat(3))
       }
     }
+
     if(a2.getClass != classOf[Aaa]){
       println("a2 not a Aaa")
     }
+
     // override vars
     val merc = new Mercedes()
     println("merc: " + merc)
@@ -37,10 +40,13 @@ object InheritDemo extends Demo {
     // eq,  equals
     val teqa = new TeqA(11, 100f)
     println("teqa: " + teqa)
+
     val teqb = new TeqB(22, 200f, "Second-Level")
     println("teqb: " + teqb)
+
     val teqa2 =  new TeqA(11, 100f)
     println("teq1==teq2: " + (teqa == teqa2))
+
     val teqb2 = new TeqB(11, 100f, "First-Level")
     println("teq1==teqb2: " + (teqa == teqb2))
     println("teq1==null: " + (teqa == null))
@@ -56,19 +62,19 @@ object InheritDemo extends Demo {
 // simple class with constructor and method
 class Aaa(val name: String){
 
-  def nameRepeate(num: Int = 1): String = {
+  def nameRepeat(num: Int = 1): String = {
     val names = for {a <- 0 until num} yield name
     names.mkString(" ")
   }
 }
 
 
-// inheritanse with declared constructors
+// inheritance with declared constructors
 // inherited arg `name` without declaration `val`
 class Aaa2(name: String, size: Int) extends Aaa(name) {
 
-  override def nameRepeate(num: Int=2): String = {
-    "[%s]".format(super.nameRepeate(num))
+  override def nameRepeat(num: Int=2): String = {
+    "[%s]".format(super.nameRepeat(num))
   }
 }
 
@@ -106,7 +112,7 @@ class Mercedes extends Car("Mercedes-Benz"){
 class A5 extends Aaa("A") {
   val a = 5
   def b = "B"
-  val s = nameRepeate(a)
+  val s = nameRepeat(a)
 }
 
 class A10 extends {
