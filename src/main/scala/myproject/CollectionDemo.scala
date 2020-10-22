@@ -122,10 +122,10 @@ object CollectionDemo extends Demo {
     // Recursive processing
     {
 
-      //        val intermVals = new ArrayBuffer[Int]() // debug
+      // val intermVals = new ArrayBuffer[Int]() // debug
 
       def sumList(list: List[Int], start: Int = 0): Int = {
-        //          intermVals.append(start) // debug: intermid args
+        // intermVals.append(start) // debug: intermid args
         if (list.isEmpty)
           start
         else
@@ -136,7 +136,7 @@ object CollectionDemo extends Demo {
 
       val res = sumList(nums)
       pf("Recursive sum of List: %d", res)
-      //        pf("demo1. startVals: %s", intermVals.mkString(", ")) // debug
+      // pf("demo1. startVals: %s", intermVals.mkString(", ")) // debug
     }
 
 

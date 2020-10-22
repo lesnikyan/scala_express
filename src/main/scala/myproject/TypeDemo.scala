@@ -223,6 +223,7 @@ object SelfType {
     def specialMethod: String
   }
 
+  // can been mixed only with children of Abc
   trait AbcUser {
     this: Abc =>
     def foo(s: String) = "FOO: %s, %s".format(specialMethod, s)
@@ -240,5 +241,23 @@ object SelfType {
   //  class Target02 extends AbcUser {
   //    def getMsg = foo("Target01")
   //  }
+
+
+  // structural self type
+  trait Printable {
+    this: {def getInfo(tpl: String): String} =>
+
+    val tpl = "Info(%s)"
+
+    def printInfo = println(getInfo(tpl))
+  }
+
+  // should has method: def getInfo(tpl: String): String
+  class PrintableUnit(val name: String) extends Printable {
+
+    override val tpl = "==Unit(%s)=="
+
+    def getInfo(tpl: String): String = tpl format name
+  }
 
 }
