@@ -6,6 +6,115 @@ object MatchingDemo extends Demo {
     def run = {
 
 
+        // like switch
+        var res1 = 0
+        val condVal = "four"
+        condVal match {
+            case "one" => res1 = 1
+            case "two" => res1 = 2
+            case "four" => res1 = 4
+        }
+        ps("res 1:", res1)
+
+        // like switch returning result
+        val condVal2 = "one"
+        val res2 = condVal2 match {
+            case "one"  => 1
+            case "two"  => 2
+            case "four" => 4
+            case _ => 5 // default case
+        }
+        ps("res 2:", res2)
+
+        // if condition
+
+        val nums3 = Map("one" -> 1, "two" -> 2, "tree" -> 3)
+        var res3 = 0.0
+        val condVal3 = "tree"
+        var a3 = 1
+        var foo3 = (x:Int) => math.pow(x.toDouble, 2)
+
+        condVal3 match {
+            case "+" => foo3 = (x:Int) => x + x
+            case _ if(nums3.keySet.contains(condVal3)) => a3 = nums3(condVal3)
+            case _ => a3 = 10
+        }
+        res3 = foo3(a3)
+        ps("res 3:", res3)
+
+        // var matching
+
+        val cond4 = "123"
+        val res4 = cond4 match {
+            case "456" => "last"
+            case arg => "first(%s)".format(arg)
+        }
+
+        val cond5 = 5
+        val res5 = cond5 match {
+            case 3 => 3
+            case arg if(arg < 10) => 2 * arg
+            case _ => 10
+        }
+        ps("res 5:", res5)
+
+        // Name conflict between constant and case argument
+        val maxVal = 10
+        val cond6 = 7
+        val res6 = cond6 match {
+            case curVal if curVal < maxVal / 2 => curVal * 10 // maxVal - is pre-defined const
+            case `maxVal` => 1000                             // maxVal - is pre-defined const
+            case maxVal if maxVal >= `maxVal` => 100 * `maxVal` // // maxVal - is a local arg
+            case _ => 5
+        }
+        ps("res 6:", res6)
+
+        // Option matching # 7
+        val cond7: List[Option[String]] = List(Some("One"), Some("Two"), Some("Tree"), None, null)
+        for(item <- cond7){
+            item match {
+                case Some(str) => ps("Option:", str)
+                case None => ps("None item")
+                case _ => ps("Non-option value")
+            }
+        }
+
+        // Option in map # 8
+        val cond8 = Map("one" -> 1, "two" -> 2, "three" -> 3)
+        val keys8 = List("one", "two", "three", "four")
+        for(key <- keys8) {
+            for (item <- cond8.get(key)){
+                ps("map val: ", item)
+            }
+        }
+
+        // PartialFunction # 9
+        // https://www.scala-lang.org/api/current/scala/PartialFunction.html
+        val f:PartialFunction[Any, String] = {
+            case a:Int => ("Int number %d".format(a))
+            case b:String => ("String value '%s'".format(b))
+            case null => ("NULL value")
+            case _ => ("Unknown case")
+        }
+
+        val cond9 = List("Hello!", 123, 1.0, null)
+        for(item <- cond9){
+            ps(f(item))
+        }
+
+
+        // 10. OR cases
+
+        val orCaseVals = for(x <- 1 to 7) yield {
+            (x, x match {
+                case 1 => "one"
+                case 2 | 3 => "2-3"
+                case 4 | 5 | 6 => "4-6"
+                case _ => "other"
+            })
+        }
+        ps(s"OR-cases: $orCaseVals")
+
 
         // 11. Type mathcing
         val obbVals : Array[Any] = Array("a  b c", 128)
